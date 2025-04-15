@@ -2,9 +2,9 @@ name: CI Angular Docker
 
 on:
   push:
-    branches: [ master ]
+    branches: [ main ]
   pull_request:
-    branches: [ master ]
+    branches: [ main ]
 
 jobs:
   build:
@@ -29,4 +29,4 @@ jobs:
         run: docker build -t angular-ci .
 
       - name: Fin du pipeline
-        run: echo " Build et Docker image terminés"
+        run: echo "Build et Docker image terminés"
