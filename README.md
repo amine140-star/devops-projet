@@ -1,7 +1,7 @@
 # TP DevOps – Projet Angular avec Docker & CI/CD
-
+# SOUID MOHAMED AMINE 4IPS Grp 1
 Ce projet met en œuvre une application Angular conteneurisée avec Docker et automatisée avec GitHub Actions.  
-📁 Nom du dépôt GitHub : `devops-projet`
+Nom du dépôt GitHub : `devops-projet`
 
 ---
 
@@ -13,10 +13,14 @@ git remote add origin https://github.com/amine140-star/devops-projet.git
 git add .
 git commit -m "Initial commit"
 git push -u origin main
-➡️ Le fichier .gitignore exclut node_modules, /dist, .vscode/, *.log, etc.
 
-🐳 2. Conteneurisation avec Docker
- #Dockerfile
+Le fichier .gitignore exclut node_modules, /dist, .vscode/, *.log, etc.
+
+
+
+2. Conteneurisation avec Docker
+Dockerfile
+
 dockerfile
 Copy
 Edit
@@ -24,7 +28,8 @@ FROM nginx:alpine
 COPY ./dist/projet-angular-main /usr/share/nginx/html
  Ce fichier copie le build Angular dans un serveur Nginx léger.
 
-  #docker-compose.yml
+docker-compose.yml
+
 yaml
 Copy
 Edit
@@ -36,14 +41,18 @@ services:
       - "4200:80"
 Ce fichier permet de lancer facilement le conteneur avec docker-compose up.
 
- #Commandes utiles
+Commandes utiles:
+
 bash
 Copy
 Edit
 docker build -t angular-ci .        # Build manuel de l’image
 docker run -p 4200:80 angular-ci    # Tester manuellement
 docker-compose up                   # Lancer avec Docker Compose
- #3. Automatisation avec GitHub Actions (CI/CD)
+
+
+ 3. Automatisation avec GitHub Actions (CI/CD) :
+
 .github/workflows/ci.yml
 yaml
 Copy
@@ -87,7 +96,10 @@ jobs:
 
       - name: Fin du pipeline
         run: echo "Build et push terminés"
- #Résumé :
+
+
+ 4- Résumé :
+
 
 - Récupère le code
 
@@ -99,7 +111,10 @@ jobs:
 
 - Push sur Docker Hub automatiquement
 
-- 4. Tests
+
+- 5. Tests :
+
+
 Test du pipeline CI/CD
 Déclenché automatiquement sur push ou pull_request vers main
 
@@ -114,7 +129,12 @@ docker run -p 4200:80 amine/angular-ci
 ➡️ Ouvrir http://localhost:4200
 
 
+✅ Pipeline test déclenché le 15 avril
 
+**************************************
+
+
+Concernant mon ancien projet Angulr de l'année dernière !
 
 # Twin4Project
 
@@ -144,7 +164,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-✅ Pipeline test déclenché le 15 avril
 
 
 
