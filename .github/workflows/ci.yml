@@ -36,11 +36,11 @@ jobs:
 
       - name: Push de l'image Docker
         run: |
-          docker tag angular-ci amine/angular-ci:latest
-          docker push amine/angular-ci:latest
+          docker tag angular-ci mohamed40/angular-ci:latest
+          docker push mohamed40/angular-ci:latest
 
       - name: Étape de déploiement simulée
-        run: echo "docker run -p 4200:80 amine/angular-ci:latest"
+        run: echo "docker run -p 4200:80 mohamed40/angular-ci:latest"
 
       - name: Tag automatique de version
         run: |
