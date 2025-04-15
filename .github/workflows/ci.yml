@@ -41,13 +41,5 @@ jobs:
 
       - name: Étape de déploiement simulée
         run: echo "docker run -p 4200:80 mohamed40/angular-ci:latest"
-
-      - name: Tag automatique de version
-        run: |
-          git config --global user.email "you@example.com"
-          git config --global user.name "GitHub Actions"
-          git tag v1.0.0-$(date +%Y%m%d%H%M%S)
-          git push origin --tags
-
       - name: Fin du pipeline
         run: echo "Pipeline terminé avec succès"
