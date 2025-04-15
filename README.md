@@ -126,10 +126,10 @@ Copy
 Edit
 docker pull amine/angular-ci:latest
 docker run -p 4200:80 amine/angular-ci
-➡️ Ouvrir http://localhost:4200
+➡ Ouvrir http://localhost:4200
 
 
-✅ Pipeline test déclenché le 15 avril
+ Pipeline test déclenché le 15 avril
 
 **************************************
 
