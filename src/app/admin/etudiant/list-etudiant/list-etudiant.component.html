@@ -1,0 +1,85 @@
+<a *ngIf="test" class="btn btn-sm btn-success" routerLink="/admin/student/add">Add</a>
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Students</h4>
+        <div style="float: right;">
+            <input type="text" class="form-control" placeholder="&#61442; Search Here" title="Search here"
+                [(ngModel)]="search">
+        </div>
+        <p class="card-description">
+            List of students
+        </p>
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of birth</th>
+                        <th>Option</th>
+                        <th>Gender</th>
+                        <th *ngIf="test">Action</th>
+                        <th *ngIf="test">Other</th>
+                        <th>View</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr [ngStyle]="{'background-color' : e.sexe === 'homme' ? '#E7FBFE' : '#FEE7F3'}" *ngFor="let e of etudiants | filter:search | paginate : {
+                        itemsPerPage: tableSize,
+                        currentPage: page,
+                        totalItems: count
+                      };
+                      let i = index">
+                        <td>{{ e.idEtudiant }}</td>
+                        <td>{{ e.nomE }}</td>
+                        <td>{{ e.prenomE }}</td>
+                        <td>{{ e.dateNaissance }}</td>
+                        <td>{{ e.op }}</td>
+                        <td>{{ e.sexe }}</td>
+                        <td *ngIf="test">
+                            <a [routerLink]="['/admin/student/update',e.idEtudiant]"
+                                class="btn btn-sm btn-outline-warning">
+                                update
+                            </a>
+                            &nbsp;
+                            <button class="btn btn-sm btn-outline-danger" (click)="delete(e)">
+                                delete
+                            </button>
+                        </td>
+                        <td *ngIf="test">
+                            <a [routerLink]="['/admin/student/assign-to-departement',e.idEtudiant]"
+                                class="btn btn-sm btn-outline-warning">
+                                assign to departement
+                            </a>
+                        </td>
+                        <td>
+                            <div>
+                                <a [routerLink]="['/admin/student/view-teams',e.idEtudiant]"
+                                    class="btn btn-sm btn-outline-warning">
+                                    View teams
+                                </a>
+                            </div>
+                            <div>
+                                <a [routerLink]="['/admin/student/view-stages',e.idEtudiant]"
+                                    class="btn btn-sm btn-outline-warning">
+                                    View stages
+                                </a>
+                            </div>
+                            <div>
+                                <a [routerLink]="['/admin/student/view-contracts',e.idEtudiant]"
+                                    class="btn btn-sm btn-outline-warning">
+                                    View contracts
+                                </a>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="d-flex justify-content-center">
+                <pagination-controls previousLabel="Prev" nextLabel="Next" (pageChange)="onTableDataChange($event)">
+                </pagination-controls>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-md-3" >
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title">{{pr.nomprojet}}</h5>
+          <p class="card-text">
+            Description : {{pr.description}}
+            <br>
+            Date limite Projet : {{pr.datelimiteProjet}}
+            <br>
+            Evolution : {{pr.evolution}}
+            <br>
+            Matiere : {{pr.matiere}}
+            <br>
+            <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+              <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{pr.nbrLike}}</div>
+            </button>
+          </p>
+        </div>
+      </div>
+      <br><br>
+    </div>
+  </div>
+  <br>
+  

@@ -1,0 +1,24 @@
+<div class="row">
+  <div class="col-md-3" >
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title text-center"> Stage</h5>
+        <p class="card-text fw-bold">
+          Start Date : {{stage.dateDebutStage}}
+          <br>
+          End Date : {{stage.dateFinStage}}
+          <br>
+          Type : {{stage.typeStage}}
+          <br>
+          Resume : {{stage.resumeStage}}
+          <br>
+          <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+            <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{stage.nbrLike}}</div>
+          </button>
+        </p>
+      </div>
+    </div>
+    <br><br>
+  </div>
+</div>
+<br>

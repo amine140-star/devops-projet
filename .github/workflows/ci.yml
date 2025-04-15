@@ -1,0 +1,32 @@
+name: CI Angular Docker
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code
+        uses: actions/checkout@v3
+
+      - name: Installer Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Installer les dépendances
+        run: npm install
+
+      - name: Build Angular app
+        run: npm run build --prod
+
+      - name: Build Docker image
+        run: docker build -t angular-ci .
+
+      - name: Fin du pipeline
+        run: echo " Build et Docker image terminés"

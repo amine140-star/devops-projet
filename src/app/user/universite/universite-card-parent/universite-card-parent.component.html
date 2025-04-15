@@ -1,0 +1,8 @@
+<h2>Details Universities</h2>
+<div class="row">
+    <app-universite-card-child class="col" [universite]="u" *ngFor="let u of listUniver | paginate: {itemsPerPage: 2, currentPage: p}"
+    (incrementEvent)="incrementNbrLike($event)">
+    </app-universite-card-child>
+</div>
+<br>
+<pagination-controls (pageChange)="p = $event" class="float-right" style="justify-content:right;"></pagination-controls>

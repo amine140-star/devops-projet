@@ -1,0 +1,53 @@
+# Angular build output
+/dist
+/tmp
+/out-tsc
+/bazel-out
+
+# Node modules
+/node_modules
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDEs and editors
+.idea/
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
+
+# Coverage / test
+/coverage
+/testem.log
+/libpeerconnection.log
+
+# Angular cache
+/.angular/cache
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Docker
+docker-compose.override.yml
+*.tar
+*.pid
+
+# GitHub Actions cache / outputs (rare mais possible)
+/.github/workflows/*.log

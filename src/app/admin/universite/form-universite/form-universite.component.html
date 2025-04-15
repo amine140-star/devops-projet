@@ -1,0 +1,82 @@
+<div class="card mx-auto" style="width: 60em;">
+    <div class="card-body">
+      <h2 class="card-title text-center">{{action}} an University</h2>
+      <form class="forms-sample" #f="ngForm">
+        <br><br>
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Image</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="imgUniv" [(ngModel)]="universite.imgUniv" placeholder="University image" required #n="ngModel">
+          </div>
+        </div>
+        <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="n.invalid && n.touched">
+          <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
+            <div *ngIf="n.hasError('required')">
+                This field is required
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Name</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="nomUniv" [(ngModel)]="universite.nomUniv" placeholder="University name" required pattern="[A-Za-z\s]{3,12}$" #a="ngModel">
+          </div>
+        </div>
+        <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="a.invalid && a.touched">
+          <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
+            <div *ngIf="a.hasError('required')">
+                This field is required
+            </div>
+            <div *ngIf="a.hasError('pattern')">
+                error pattern
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Description</label>
+          <div class="col-sm-9">
+            <input type="text" class="form-control" name="descriptionUniv" [(ngModel)]="universite.descriptionUniv" id="exampleInputEmail2" placeholder="University description" required pattern="[A-Za-z\s]{3,}$" #b="ngModel">
+          </div>
+        </div>
+        <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="b.invalid && b.touched">
+          <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
+            <div *ngIf="b.hasError('required')">
+                This field is required
+            </div>
+            <div *ngIf="b.hasError('pattern')">
+                error pattern
+            </div>
+        </div>
+        <div class="form-group row">
+          <label for="exampleInputMobile" class="col-sm-3 col-form-label">Creation date</label>
+          <div class="col-sm-9">
+            <input type="date" class="form-control" name="dateCreationUniv" [(ngModel)]="universite.dateCreationUniv" id="exampleInputMobile" required #c="ngModel">
+          </div>
+        </div>
+        <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="c.invalid && c.touched">
+          <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
+            <div *ngIf="c.hasError('required')">
+                This field is required
+            </div>
+        </div>
+        <div class="form-group row">
+          <label class="col-sm-3 col-form-label">Type</label>
+          <div class="col-sm-9">
+            <select type="text" class="form-control form-select form-select-sm" aria-label=".form-select-sm example" name="typeuniv" [(ngModel)]="universite.typeuniv" required #d="ngModel">
+              <option value="PUBLIC">PUBLIC</option>
+              <option value="PRIVATE">PRIVATE</option>
+              <option value="SEMIPUBLIC">SEMIPUBLIC</option>
+            </select>
+          </div>
+        </div>
+        <div [ngClass]="{'fade-out-alert':test==true}" class="alert alert-danger" *ngIf="d.invalid && d.touched">
+          <button (click)="removeAlertMsg()" type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" style="float: right;"></button>
+            <div *ngIf="d.hasError('required')">
+                This field is required
+            </div>
+        </div>
+        <div class="text-center">
+          <button type="submit" id="Robot" class="btn btn-sm btn-success me-2" (click)="saveUniversite()" [disabled]="f.invalid">{{action}}</button>
+          <button class="btn btn-sm btn-light me-2" (click)="cancel()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>

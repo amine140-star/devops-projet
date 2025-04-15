@@ -1,0 +1,88 @@
+<h1>{{title}}</h1>
+
+    
+<div class="card p-5">  
+<div class="row">
+  <div class="col-md-3">
+    <button *ngIf="test" [routerLink]="['/admin/contrats/addContrat']"  class="btn btn-sm btn-primary">
+      Add Contrat
+    </button>
+  </div>
+  <div class="col-md-3">
+    <label for="searchCategory">Category </label>
+    <select [formControl]="searchCategory" id="searchCategory"  class="form-control" style="border: 1px solid blue;">
+      <option value="dateDebutContrat" selected>Start Debut</option>
+      <option value="dateFinContrat">End Date</option>
+      <option value="archive">Archive</option>
+      <option value="specialite">Speciality</option>
+      <option value="montantContrat">Amount</option>
+    </select>
+  </div>
+  <div class="col-md-3">
+    <label for="searchValue"><i class="icon-search"></i> Search </label>
+    <input *ngIf="searchCategory.value=='dateDebutContrat'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
+    <input *ngIf="searchCategory.value=='dateFinContrat'" type="date" id="searchValue" [formControl]="searchValue"  class="form-control">
+    <select  *ngIf="searchCategory.value=='archive'" id="searchValue" [formControl]="searchValue" class="form-control">
+      <option value="true" selected>Yes</option>
+      <option value="false">No</option>
+    </select>
+    <select *ngIf="searchCategory.value=='specialite'" id="searchValue" [formControl]="searchValue" class="form-control">
+      <option value="IA" selected>IA</option>
+      <option value="RESEAUX">RESEAUX</option>
+      <option value="CLOUD">CLOUD</option>
+      <option value="SECURITE">SECURITE</option>
+  </select>
+    <input *ngIf="searchCategory.value=='montantContrat'" type="number" id="searchValue" [formControl]="searchValue" class="form-control"/>
+  </div>
+</div>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Start Date</th>
+        <th>End Date</th>
+        <th>Speciality</th>
+        <th>Archive</th>
+        <th>Amount  </th>
+        <th *ngIf="test">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr [ngStyle]="{'background-color': contrat.specialite === 'IA'  ? '#E8FEE7' : contrat.specialite === 'SECURITE' ? '#E7FEFE' : contrat.specialite === 'CLOUD' ? '#F3D8FE' : '#D8DFFE'}" *ngFor="let contrat of listContrat
+        | searchContrat: [searchValue.value] : [searchCategory.value]
+        | paginate : {
+          itemsPerPage: tableSize,
+          currentPage: page,
+          totalItems: count
+        };
+        let i = index">
+        <td>{{contrat.dateDebutContrat}}</td>
+        <td>{{contrat.dateFinContrat}}</td>
+        <td>{{contrat.specialite}}</td>
+        <td>{{contrat.archive}}</td>
+        <td>{{contrat.montantContrat}}</td>
+        <td *ngIf="test">
+          <button   [routerLink]="['/admin/contrats/details',contrat.idContrat]"  class="btn btn-sm btn-primary">
+            Details
+          </button>
+          &nbsp;
+          <button   [routerLink]="['/admin/contrats/affect-Contrat-to-Etudiant',contrat.idContrat]"  class="btn btn-sm btn-primary">
+            Asign To Etudiant 
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <pagination-controls
+      previousLabel="Prev"
+      nextLabel="Next"
+      (pageChange)="onTableDataChange($event)"
+    >
+    </pagination-controls>
+  </div>
+</div>
+<br>

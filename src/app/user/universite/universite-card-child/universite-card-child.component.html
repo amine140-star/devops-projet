@@ -1,0 +1,21 @@
+<div class="col-md-3">
+    <div class="card" style="width: 18rem;" [ngClass]="{'new-class':true}">
+        <img src="{{universite.imgUniv}}" class="card-img-top" alt="UnivImg" style="height:200px; width:18rem;">
+        <div class="card-body">
+            <h5 class="card-title">{{universite.nomUniv}}</h5>
+            <p class="card-text">
+                Description : {{universite.descriptionUniv}}
+            </p>
+            <p>
+                Creation date : {{universite.dateCreationUniv}}
+            </p>
+            <p>
+                Type : {{universite.typeuniv}}
+            </p>
+            <button (click)="notifyParent()" type="button" class="btn btn-outline-secondary btn-rounded btn-icon" style="float:right;">
+                <i class="ti-heart text-danger"></i> <br><div style="padding: bottom 15px;">{{universite.nbrLike}}</div>
+            </button>
+        </div>
+    </div>
+    <br><br><br>
+</div>

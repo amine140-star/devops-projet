@@ -1,0 +1,23 @@
+
+<input [(ngModel)]="search" type="text" class="form-control" placeholder="Search" aria-label="Recipient's username">
+<a class="btn btn-sm btn-success" routerLink="/admin/departements/new">new Departement</a>   &nbsp;
+<a class="btn btn-sm btn-success" routerLink="/admin/departements/retreive">retreive departement by universite</a>
+<div class="card">
+  <div class="card-body">
+    <h4 class="card-title">Departements</h4>
+    <p class="card-description">List of departements</p>
+    <div class="table-responsive">
+      <table class="table table-hover">
+
+        <tbody>
+          <tr *ngFor="let d of list | filter: search">
+
+            <app-departementparent [departement]="d" (notification)="delete($event)">
+
+            </app-departementparent>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

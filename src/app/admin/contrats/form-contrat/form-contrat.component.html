@@ -1,0 +1,86 @@
+
+
+<div class="col-lg-6 grid-margin stretch-card" style=" margin:auto">
+    <div class="card">
+    <div class="card-body">
+        <h4 class="card-title text-center">
+            {{action}} Contract
+        </h4>
+        
+        <form [formGroup]="form" (ngSubmit)="SaveContrat()" class="forms-sample">
+
+            <div class="form-group">
+                <label>Start Date Contrat</label>
+                <input [(ngModel)]="contrat.dateDebutContrat" type="date" formControlName="dateDebutContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['dateDebutContrat'].touched && form.controls['dateDebutContrat'].invalid">
+                    <p *ngIf="form.controls['dateDebutContrat'].hasError('required')">
+                        Start Date Contrat is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>End Date Contrat</label>
+                <input [(ngModel)]="contrat.dateFinContrat" type="date" formControlName="dateFinContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['dateFinContrat'].touched && form.controls['dateFinContrat'].invalid">
+                    <p *ngIf="form.controls['dateFinContrat'].hasError('required')">
+                        End Date Contrat is required
+                    </p>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Archive</label>
+                <select [(ngModel)]="contrat.archive" formControlName="archive" class="form-control">
+                    <option value="false" selected>No</option>
+                    <option value="true">Yes</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="form.controls['archive'].touched && form.controls['archive'].invalid">
+                    <p *ngIf="form.controls['archive'].hasError('required')">
+                        Archive is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Speciality </label>
+                <select [(ngModel)]="contrat.specialite" formControlName="specialite" class="form-control">
+                    <option value="IA" selected>IA</option>
+                    <option value="RESEAUX">RESEAUX</option>
+                    <option value="CLOUD">CLOUD</option>
+                    <option value="SECURITE">SECURITE</option>
+                </select>
+                <div class="alert alert-danger" *ngIf="form.controls['specialite'].touched && form.controls['specialite'].invalid">
+                    <p *ngIf="form.controls['specialite'].hasError('required')">
+                        Speciality is required
+                    </p>
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label>Amount</label>
+                <input [(ngModel)]="contrat.montantContrat" type="number" formControlName="montantContrat" class="form-control">
+                <div class="alert alert-danger" *ngIf="form.controls['montantContrat'].touched && form.controls['montantContrat'].invalid">
+                    <p *ngIf="form.controls['montantContrat'].hasError('required')">
+                        Amount is required
+                    </p>
+                    <p *ngIf="form.controls['montantContrat'].hasError('min')">
+                        Minimum Value is 100 !
+                    </p>
+                    <p *ngIf="form.controls['montantContrat'].hasError('max')">
+                        Maximum Value is 999999999 !
+                    </p>
+                </div>
+            </div>
+            <div class="text-center">
+                <button type="submit" class="btn btn-sm btn-success  me-2" [disabled]="form.invalid">
+                    {{action}}
+                </button>
+                &nbsp;
+                <button *ngIf="action == 'Add'" type="reset" class="btn btn-sm btn-success  me-2" >
+                    Cancel
+                </button>
+            </div>
+        </form>
+    </div>
+<br>

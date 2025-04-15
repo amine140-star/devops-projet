@@ -1,0 +1,52 @@
+<button class="btn btn-primary" [routerLink]="['/admin/projets/add']">Add Project</button>
+<div class="row">
+    <div style="float: right;">
+
+
+    </div>
+    <div class="table-responsive">
+
+        <table class="table table-hover">
+            <thead>
+                <tr >
+                    <th>Name</th>
+                    <th> Description</th>
+                    <th>Time limit</th>
+                    <th>Evolution</th>
+                    <th>Subject</th>
+                    <th *ngIf="test">Action</th>
+
+                    <th><input type="search" class="form-control" placeholder="Search Here" title="Search here"
+                            [(ngModel)]="search"> </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let p of projet | filter:search" 
+                [ngClass]="{'active1':p.evolution==='En_cours', 'active2': p.evolution==='Commence_prochainement', 'active3': p.evolution==='Validé'}">
+
+
+                    <td>{{ p.nomprojet }}</td>
+                    <td>{{ p.description}}</td>
+                    <td>{{ p.datelimiteProjet}}</td>
+                    <td>{{ p.evolution}}</td>
+                    <td>{{ p.matiere}}</td>
+
+
+
+                    <td *ngIf="test">
+                        <a [routerLink]="['/admin/projets/update',p.idprojet]" class="btn btn-sm btn-warning">
+                            update
+                        </a>
+                        &nbsp;
+                        <button class="btn btn-sm btn-danger" (click)="delete(p)">
+                            delete
+                        </button>
+                        &nbsp;
+                        <a [routerLink]="['/admin/projets/view-equipes',p.idprojet]"
+                            class="btn btn-sm btn-outline-info btn-fw btn-rounded badge badge-info">View Teams</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
