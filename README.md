@@ -131,7 +131,7 @@ docker run -p 4200:80 amine/angular-ci
 
  Pipeline test déclenché le 15 avril
 
-**************************************
+-------------------------------
 
 
 Concernant mon ancien projet Angulr de l'année dernière !
