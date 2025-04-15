@@ -128,8 +128,28 @@ docker pull amine/angular-ci:latest
 docker run -p 4200:80 amine/angular-ci
 ➡ Ouvrir http://localhost:4200
 
+Vérification de l'image Docker sur Docker Hub
+
+Pour attester que l’image a bien été poussée sur Docker Hub via le pipeline CI/CD, voici les étapes réalisées :
+
+- Connexion avec le compte Docker Hub utilisé (mohamed40)
+
+- Recherche du dépôt angular-ci
+
+🏷- Vérification de l’image avec le tag latest
+
+- Tester l'image localement
+bash
+Copy
+Edit
+docker pull mohamed40/angular-ci:latest
+docker run -p 4200:80 mohamed40/angular-ci:latest
+Cela permet de tirer l'image depuis Docker Hub et de la lancer localement sur le port 4200.
+
+
 
  Pipeline test déclenché le 15 avril
+![image](https://github.com/user-attachments/assets/a72de697-d1a5-4259-93f1-386a3082f3c3)
 
 -------------------------------
 
